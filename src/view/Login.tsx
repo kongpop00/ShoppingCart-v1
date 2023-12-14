@@ -1,95 +1,36 @@
-import liff from "@line/liff";
-import axios from "axios";
-
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom'
+import { useLineContext } from '../context/LineContext'
 
 const Login = () => {
-    const [data, setdata] = useState<any>('');
-    const [text , setText]=useState<string>('')
- 
-    //const navigate = useNavigate();
-
-    const main = async () => {
-      await liff
-        .init({
-          liffId: "2002021317-2Bymmev1", // Use own liffId
-        })
-        .then(() => {
-          if (liff.isLoggedIn()) {
-            getProfile();
-            console.log('login แล้วนะจ้ะ');
-           // navigate('/shop')
-            
-          } else {
-            liff.login();
-            console.log(' ยังไม่ได้แล้วนะจ้ะ');
-          }
-        });
-    };
-  
-    const getProfile = async () => {
-      const profile = await liff.getProfile();
-      setdata(profile);
-    };
-  
-    const logout = async () => {
-      liff.logout();
-      
-    };
-  
-  
-   
-    useEffect(() => {
-     main();
-
-    }, []);
-   
-   
-  
-   
-    const sendMessage = async()=>{
+    const {mainLine} = useLineContext()
+  return (
+    <div className='fixed w-full z-[20]'>
+      <div className="hero min-h-screen" style={{backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)'}}>
+  <div className="hero-overlay bg-opacity-60"></div>
+  <div className="hero-content text-center text-neutral-content">
+    <div className=" w-[350px] sm:w-[600px] lg:w-[700px] h-[80vh] bg-[#8e6646] flex justify-center items-center rounded-[30px] ">
+      <div className=' w-full justify-center items-center  '>
+    <h1 className= ' text-[50px] md:text-[72px] font-[600]'>Welcome To </h1>
+     <img  className=" m-[auto] md:w-[250px]"src="/checkout/logoblack.png" alt="" />
      
-      const userids = data.userId 
-      console.log(userids);
-      
-      try {
-        
-        const respone = await axios.post('http://localhost:8000/send-message',{
-          userId : userids,
-          messages: text
-
-        })
-       
-        console.log(userids , text);
-        console.log('respones ' , respone.data);
-        
-        
-      }catch (error) {
-        console.log('errorasdasasdasd', error)
-      }
-      
-     
-      
-    }
-    return (
-      <div className="flex flex-col justify-center items-center h-[100vh]">
-        <div className="flex">
-          <div className="avatar">
-            <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src={data.pictureUrl} />
-            </div>
-          </div>
-        </div>
-        <div>name : {data.displayName}</div>
-        <div>name : {data.userId}</div>
-        <button onClick={logout} className="btn btn-error text-white">LogOut</button>
-        <div>
-        <input type="text" onChange={((e)=>setText(e.target.value))}></input>
-        <button onClick={sendMessage}>send message</button>
-        </div>
+      <img className='m-[auto] md:w-[250px] mt-[10px]' src="/checkout/qrcode.png" alt="" />
+      <p className=' w-[200px] md:w-[250px] m-[auto] bg-green-500 font-[400] md:text-[20px] '>scan QR code by App Line</p>
+      <div className='mt-[20px] w-[200px] md:w-[250px] m-[auto]'>
+      <button onClick={mainLine} className="btn btn-green  w-full">LOGIN LINE</button>
+      <Link to={'/Home'}><button className="btn btn-primary w-full mt-[10px] ">Get Started</button></Link>
       </div>
-    );
-  }
+      </div>
+      
+     
+    
+      
+     
+    </div>
+  </div>
+</div>
+</div>
+   
+  )
+}
 
 export default Login

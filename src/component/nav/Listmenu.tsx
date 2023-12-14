@@ -3,13 +3,16 @@ import { Link, NavLink } from "react-router-dom";
 import InputSearch from "../search/InputSearch ";
 import Close from "./Close";
 import Hemberger from "./Hemberger";
+import { useLineContext } from "../../context/LineContext";
+
 
 
 //  button swit  on-off - today chang id  = with Heemberger  button --
 
 const Listmenu = () => {
+  
   const [show_list, setShow_List] = useState(false);
-
+  const { logout  ,dataLine} = useLineContext();
   const on_of_Hemberger = () => {
     setShow_List(!show_list);
   };
@@ -21,6 +24,7 @@ const Listmenu = () => {
     console.log("show_list", show_list);
   }, [show_list]);
 
+  
   return (
     <>
       {show_list ? (
@@ -59,7 +63,11 @@ const Listmenu = () => {
       {show_list && (
         <div className=" text-[18px] z-10 absolute top-0 w-full m-[auto] bg-[#8e6646] flex justify-center h-[100vh] leading-[50px] md:hidden">
           <div className="flex flex-col items-center w-[300px] mt-[70px] p-[50px] text-[20px] text-white  ">
-           
+            {dataLine && 
+            <div className="">
+              <img className="w-[100px] mt-[20px] h-[100px] rounded-full" src={dataLine.pictureUrl} alt="" />
+            </div>
+            }
             < InputSearch/>
           
             <div className="flex mt-[20px] w-[260px] bg-white"></div>
@@ -110,6 +118,8 @@ const Listmenu = () => {
               {" "}
               YOUTUBE
             </a>
+            {dataLine && 
+             <button onClick={logout} className="bg-red-600  text-white font-[500] w-[150px] rounded-[20px] hover:text-white text-[20px] flex justify-center items-center h-[60px]"> <Link to={'/'}>LogOut</Link></button>}
           </div>
         </div>
       )}

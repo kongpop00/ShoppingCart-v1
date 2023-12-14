@@ -10,19 +10,24 @@ import { SearchbarProvider } from "./context/SearchContext";
 import { ShoppingCartProvider } from "./context/ShopPingCartContext";
 import { CheckOut } from "./component/checkOut/checkOut";
 import Login from "./view/Login";
+import { LineProvider } from "./context/LineContext";
+
 
 function App() {
   return (
+    <LineProvider>
     <SearchbarProvider>
       <ShoppingCartProvider>
         <CheckOut />
         <div className="relative">
           <Routes>
-            <Route path="/home" element={<Home />} />
+         
+            <Route path="/" element={<Login/>} />
+            <Route path="/Home" element={<Home/>} />
             <Route path="/About" element={<About />} />
             <Route path="/Contact" element={<Contct />} />
             <Route path="/Shop" element={<Shop />} />
-            <Route path="/" element={<Login />} />
+           
           </Routes>
           <div className="mt-[50px]">
             <Footer />
@@ -30,6 +35,7 @@ function App() {
         </div>
       </ShoppingCartProvider>
     </SearchbarProvider>
+    </LineProvider>
   );
 }
 

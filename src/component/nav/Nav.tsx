@@ -3,28 +3,21 @@ import { useShoppingCart } from "../../context/ShopPingCartContext";
 
 import { useSearchContext } from "../../context/SearchContext";
 import Listmenu from "./Listmenu";
-
+import { useLineContext } from "../../context/LineContext";
 
 const Nav = () => {
-
   const { cartQeantity, openCart } = useShoppingCart();
   const { setSearchName, handlesearchname } = useSearchContext();
-
+  const { dataLine , logout} = useLineContext();
   return (
     <div className="">
       <div className=" navbar  m-[auto] px-[20px] bg-[#8e6646]">
         <div className="flex-1">
           <Link to="/">
             <a className="btn btn-ghost normal-case text-xl">
-              <img
-                className="w-[150px] h-[50px]"
-                src="/logo.png"
-                alt=""
-              />
+              <img className="w-[150px] h-[50px]" src="/logo.png" alt="" />
             </a>
           </Link>
-     
-     
         </div>
 
         <div className="flex-none">
@@ -32,7 +25,7 @@ const Nav = () => {
           <div className="   md:flex   hidden  mr-[50px] bg-white rounded-[20px]   rounded-r-[30px] ">
             <input
               type="text"
-              onChange={(e) =>setSearchName(e.target.value)}
+              onChange={(e) => setSearchName(e.target.value)}
               placeholder="Search Menu"
               className=" ml-[20px] border-none focus: rounded-none text-[#8e6646] font-[500] text-[18px] focus:border-red-200 input input-bordered"
             />
@@ -60,6 +53,7 @@ const Nav = () => {
             </Link>
           </div>
           {/**end input */}
+
           {/**start cart */}
 
           <div className="dropdown  dropdown-end mr-[60px]">
@@ -87,6 +81,32 @@ const Nav = () => {
           </div>
           {/**End cart */}
         </div>
+        {dataLine && (
+          <div className="hidden md:flex justify-center items-center mr-[20px] mt-[8px]">
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-[100%]  rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src={dataLine.pictureUrl}
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="mt-3 z-[1] p-2 menu menu-sm dropdown-content  h-[60px] w-52 "
+              >
+                <li>
+             <button onClick={logout} className="bg-red-600  text-white font-[500] text-[20px] flex justify-center items-center h-[60px]"> <Link to={'/'}>LogOut</Link></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        )}
       </div>
       <Listmenu />
     </div>
@@ -94,5 +114,3 @@ const Nav = () => {
 };
 
 export default Nav;
-
-

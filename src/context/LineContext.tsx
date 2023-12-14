@@ -58,6 +58,7 @@ type TypeProviderLine = {
       const getProfile = async () => {
         const profile:any = await liff.getProfile();
         setdataLine(profile);
+        navigate('/home')
       };
     
       const logout = async () => {

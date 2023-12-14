@@ -43,7 +43,7 @@ type TypeProviderLine = {
           .init({
             liffId: "2002021317-2Bymmev1", // Use own liffId
           })
-         
+          try{
             if (liff.isLoggedIn()) {
               getProfile();
               console.log('login แล้วนะจ้ะ');
@@ -54,6 +54,12 @@ type TypeProviderLine = {
               console.log(' ยังไม่ได้แล้วนะจ้ะ');
 
             }
+            
+          }catch (error){
+              console.log( 'erorr', error);
+              
+          }
+           
         
            
         

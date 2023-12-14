@@ -8,7 +8,7 @@ const Login = () => {
     const [data, setdata] = useState<any>('');
     const [text , setText]=useState<string>('')
  
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const main = async () => {
       await liff
@@ -19,7 +19,7 @@ const Login = () => {
           if (liff.isLoggedIn()) {
             getProfile();
             console.log('login แล้วนะจ้ะ');
-            navigate('/shop')
+           // navigate('/shop')
             
           } else {
             liff.login();

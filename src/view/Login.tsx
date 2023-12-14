@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useLineContext } from '../context/LineContext'
 
 const Login = () => {
-    const {mainLine} = useLineContext()
+    const {mainLine ,dataLine} = useLineContext()
   return (
     <div className='fixed w-full z-[20]'>
       <div className="hero min-h-screen" style={{backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)'}}>
@@ -16,7 +16,8 @@ const Login = () => {
       <img className='m-[auto] md:w-[250px] mt-[10px]' src="/checkout/qrcode.png" alt="" />
       <p className=' w-[200px] md:w-[250px] m-[auto] bg-green-500 font-[400] md:text-[20px] '>scan QR code by App Line</p>
       <div className='mt-[20px] w-[200px] md:w-[250px] m-[auto]'>
-      <button onClick={mainLine} className="btn btn-green  w-full">LOGIN LINE</button>
+        
+      <button onClick={mainLine} className="btn btn-green  w-full">{dataLine ? 'เข้าสู่ระบบ' : 'LoginLine' }</button>
       <Link to={'/Home'}><button className="btn btn-primary w-full mt-[10px] ">Get Started</button></Link>
       </div>
       </div>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import Nav from "../component/nav/Nav";
 const About = () => {
   return (

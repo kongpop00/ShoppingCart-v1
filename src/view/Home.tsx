@@ -11,7 +11,7 @@ import { useEffect,  } from "react";
 
 function Home() {
 
- const {mainLine ,visit ,getProfile , refaceHome }=useLineContext()
+ const { refaceHome }=useLineContext()
  
    
 

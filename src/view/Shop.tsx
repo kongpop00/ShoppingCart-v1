@@ -37,7 +37,9 @@ const Shop = () => {
       <div>
         <Nav />
       </div>
+      <div className="my-[40px]">
       <SearchBar />
+      </div>
       <div className="flex w-full justify-center md:hidden">
       <InputSearch/>
       </div>

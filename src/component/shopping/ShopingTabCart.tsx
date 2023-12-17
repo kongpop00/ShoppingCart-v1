@@ -10,7 +10,7 @@ import { FormatCurrency } from "./FormatCurrency";
 
 const ShopingTabCart = (props: any) => {
   const { closeCart, cartItems, checkOutOpen } = useShoppingCart();
-
+  
   return (
     <div className="">
       {props.open && (
@@ -34,7 +34,8 @@ const ShopingTabCart = (props: any) => {
               {cartItems.map((item) => (
                 <CartItems key={item.id} {...item} />
               ))}
-              <div className="w-full p-[40px] text-[30px] font-[500] text-end bg-[#ece3d6]">
+              {cartItems.length >0 ?
+                <div className="w-full p-[40px] text-[30px] font-[500] text-end bg-[#ece3d6]">
                 <span className="mr-[20px]">Total</span>
                 {FormatCurrency(
                   cartItems.reduce((accumulator, cartItems) => {
@@ -42,13 +43,18 @@ const ShopingTabCart = (props: any) => {
                     return accumulator + (itemjs?.price || 0) * cartItems.quantity;
                   }, 0)
                 )}
+                
                 <button
                   onClick={checkOutOpen}
                   className=" ml-[20px] text-[14px] xl:text-[18px] bg-[#8e6646]  text-white h-[45px] rounded-[10px] w-[100px] hover:bg-[#e6bb5c]"
                 >
                   Check out
                 </button>
+           
               </div>
+              
+             : <h1 className="text-black w-full p-[40px] text-[30px] font-[500] text-end bg-[#ece3d6] ">No Items</h1>  } 
+            
             </div>
           </div>
         </div>

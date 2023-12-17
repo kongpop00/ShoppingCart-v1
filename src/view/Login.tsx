@@ -1,8 +1,12 @@
-import { Link } from 'react-router-dom'
+
 import { useLineContext } from '../context/LineContext'
+
 
 const Login = () => {
     const {mainLine } = useLineContext()
+    const { handleCheckvisit} =useLineContext()
+  
+  
   return (
     <div className='fixed w-full z-[20]'>
       <div className="hero min-h-screen bg-center bg-no-repeat" style={{backgroundImage: 'url(/checkout/bg-login.png)'}}>
@@ -19,7 +23,7 @@ const Login = () => {
       <div className='mt-[20px] w-[200px] md:w-[250px] m-[auto]'>
         
       <button onClick={mainLine} className="btn bg-[#00b900]  text-white text-[20px] w-full">Login Line</button>
-      <Link to={'/Home'}><button className="btn bg-[#8e6646] text-white text-[20px] w-full mt-[10px] ">เยี่ยมชมเว็บไซต์</button></Link>
+      <button onClick={handleCheckvisit} className="btn bg-[#8e6646] text-white text-[20px] w-full mt-[10px] ">เยี่ยมชมเว็บไซต์</button>
       </div>
       </div>
       

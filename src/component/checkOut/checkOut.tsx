@@ -1,17 +1,51 @@
+import { useEffect } from "react";
+import { useLineContext } from "../../context/LineContext";
 import { useShoppingCart } from "../../context/ShopPingCartContext";
 
 import items from "../../items.json";
 import { FormatCurrency } from "../shopping/FormatCurrency";
 import CheckOutCart from "./checkOutCart";
+import axios from "axios";
 
 
 
 export const CheckOut = (props: any) => {
   const { checkOutClose, cartItems, checkPrompay, checkThank, checkCash } =
     useShoppingCart();
+  const {dataLine ,mainLine ,getProfile
+  } = useLineContext()
   const date = new Date();
   const dates = String(date).split(" ");
   console.log("date ", dates);
+
+  useEffect(()=>{
+    getProfile()
+    console.log('dataLine', dataLine);
+    
+    
+  },[])
+
+  const sendMessageLine = async () => {
+    const userids = dataLine.userId;
+    console.log(userids);
+  
+    try {
+      const respone = await axios.post("http://localhost:8000/send-message", {
+        userId: userids ,
+        messages: "กรุณา ส่งสลิปการโอน ในไลน์ ด้วยครับ ",
+      });
+  
+      console.log("respones ", respone.data);
+    } catch (error) {
+      console.log("errorasdasasdasd", error);
+    }
+  };
+  const handlepush = ()=>{
+   
+    sendMessageLine()
+    checkThank()
+    
+  }
 
   return (
     <div>
@@ -62,21 +96,37 @@ export const CheckOut = (props: any) => {
             {/**show ------------------------------------------------------------------------------------ grid 2  */}
             <div className=" mt-[40px] sm:w-full flex items-center justify-start flex-col sm:py-[20px]">
               {props.promPay && (
+                //--------------------
                 <div className="text-center  ">
-                  <img
-                    className="w-[70%] sm:w-[70%] m-[auto] xl:w-[100%]"
-                    src="/checkout/Prompay.jpg "
-                    alt=""
-                  />
+                  {dataLine ? 
+                   <><img
+                      className="w-[70%] sm:w-[70%] m-[auto] xl:w-[100%]"
+                      src="/checkout/Prompay.jpg "
+                      alt="" /><button
+                        className="btn btn-info mt-[20px]  "
+                        onClick={handlepush}
+                      >
+                        ชำระเรียบร้อย
+                      </button></> :
+                    <>
+                    <div>
+                      <h1>กรุณา Login ก่อนทำการสั่งซื้อสินค้า</h1>
+                      <button onClick={mainLine} className="btn bg-[#00b900] text-white text-[20px] w-full mt-[10px] ">Login line +</button>
 
-                  <button
-                    className="btn btn-info mt-[20px]  "
-                    onClick={checkThank}
-                  >
-                    ชำระเรียบร้อย
-                  </button>
+                    </div>
+                    </>  
+                  
+                    }
+                  
                 </div>
               )}
+
+
+
+
+
+
+
               {props.thank && (
                 <div className="m-[auto] ">
                   <img

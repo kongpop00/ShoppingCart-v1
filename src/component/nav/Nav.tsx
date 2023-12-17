@@ -101,7 +101,7 @@ const Nav = () => {
                 className="mt-3 z-[1] p-2 menu menu-sm dropdown-content  h-[60px] w-52 "
               >
                 <li>
-             <button onClick={logout} className="bg-red-600  text-white font-[500] text-[20px] flex justify-center items-center h-[60px]"> <Link to={'/'}>LogOut</Link></button>
+             <button onClick={logout} className="bg-red-600  text-white font-[500] text-[20px] flex justify-center items-center h-[60px]">Log out</button>
                 </li>
               </ul>
             </div>

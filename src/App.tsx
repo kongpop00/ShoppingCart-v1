@@ -9,7 +9,7 @@ import Shop from "./view/Shop";
 import { SearchbarProvider } from "./context/SearchContext";
 import { ShoppingCartProvider } from "./context/ShopPingCartContext";
 import { CheckOut } from "./component/checkOut/checkOut";
-import Login from "./view/Login";
+
 import { LineProvider } from "./context/LineContext";
 
 
@@ -22,8 +22,8 @@ function App() {
         <div className="relative">
           <Routes>
          
-            <Route path="/" element={<Login/>} />
-            <Route path="/Home" element={<Home/>} />
+ 
+            <Route path="/" element={<Home/>} />
             <Route path="/About" element={<About />} />
             <Route path="/Contact" element={<Contct />} />
             <Route path="/Shop" element={<Shop />} />

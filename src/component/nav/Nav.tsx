@@ -8,7 +8,7 @@ import { useLineContext } from "../../context/LineContext";
 const Nav = () => {
   const { cartQeantity, openCart } = useShoppingCart();
   const { setSearchName, handlesearchname } = useSearchContext();
-  const { dataLine , logout} = useLineContext();
+  const { dataLine , logout ,mainLine} = useLineContext();
   return (
     <div className="">
       <div className=" navbar  m-[auto] px-[20px] bg-[#8e6646]">
@@ -56,12 +56,12 @@ const Nav = () => {
 
           {/**start cart */}
 
-          <div className="dropdown  dropdown-end mr-[60px]">
+          <div className="dropdown  dropdown-end mr-[60px] mt-[10px]">
             <button onClick={openCart} className="btn w btn-ghost btn-circle">
               <div className="indicator">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-[30px] w-[30px] text-white"
+                  className="h-[35px] w-[35px] text-white "
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -73,7 +73,7 @@ const Nav = () => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge badge-sm indicator-item w-[20px] h-[20px]  bg-red-600 text-white">
+                <span className="badge badge-sm indicator-item w-[25px] h-[25px]  bg-red-600 text-white">
                   {cartQeantity}
                 </span>
               </div>
@@ -81,8 +81,8 @@ const Nav = () => {
           </div>
           {/**End cart */}
         </div>
-        {dataLine && (
-          <div className="hidden md:flex justify-center items-center mr-[20px] mt-[8px]">
+        {!!dataLine ? (
+          <div className="hidden md:flex justify-center items-center mr-[25px] mt-[8px]">
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
@@ -98,7 +98,7 @@ const Nav = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="mt-3 z-[1] p-2 menu menu-sm dropdown-content  h-[60px] w-52 "
+                className="mt-3 z-[1] p-2 menu menu-sm dropdown-content  h-[65px] w-52 "
               >
                 <li>
              <button onClick={logout} className="bg-red-600  text-white font-[500] text-[20px] flex justify-center items-center h-[60px]">Log out</button>
@@ -106,7 +106,7 @@ const Nav = () => {
               </ul>
             </div>
           </div>
-        )}
+        ): <button onClick={mainLine} className=" btn h-[50px] bg-[#e6bb5c] mr-[30px] text-[20px] text-white hidden md:block">Login</button>}
       </div>
       <Listmenu />
     </div>

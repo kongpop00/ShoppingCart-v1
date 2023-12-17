@@ -12,7 +12,7 @@ import axios from "axios";
 export const CheckOut = (props: any) => {
   const { checkOutClose, cartItems, checkPrompay, checkThank, checkCash } =
     useShoppingCart();
-  const {dataLine ,mainLine ,getProfile
+  const {dataLine ,mainLine ,getProfile 
   } = useLineContext()
   const date = new Date();
   const dates = String(date).split(" ");

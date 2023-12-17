@@ -34,7 +34,7 @@ const media = [
   {
     id: 2,
     name: "Facebook",
-    img: "/about/facebook.png",
+    img: "/about/Facebook.png",
   },
   {
     id: 1,
@@ -44,7 +44,7 @@ const media = [
   {
     id: 1,
     name: "Email",
-    img: "/about/email.png",
+    img: "/about/Email.png",
   },
 ];
 

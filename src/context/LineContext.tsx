@@ -19,7 +19,9 @@ type LineTypecontext = {
   dataLine: any;
   setVisit: any;
   visit: boolean;
-  handleCheckvisit: () => void;
+  refaceHome:()=>void
+ 
+ 
 };
 
 type dataLine = {
@@ -38,10 +40,26 @@ export function LineProvider({ children }: TypeProviderLine) {
   const navigate = useNavigate();
   const [visit, setVisit] = useState(false);
 
-  const handleCheckvisit = () => {
-    setVisit(true);
-    navigate("/home");
+  
+  const refaceHome = async () => {
+    console.log("mainline");
+
+    await liff.init({
+      liffId: "2002021317-2Bymmev1", // Use own liffId
+    });
+    try {
+      console.log("===========================");
+
+      if (liff.isLoggedIn()) {
+        getProfile();
+        console.log("login แล้วนะจ้ะ");
+        
+      } 
+    } catch (error) {
+      console.log("erorr", error);
+    }
   };
+
 
   const mainLine = async () => {
     console.log("mainline");
@@ -55,10 +73,13 @@ export function LineProvider({ children }: TypeProviderLine) {
       if (liff.isLoggedIn()) {
         getProfile();
         console.log("login แล้วนะจ้ะ");
-        navigate("/home");
+        
       } else {
+        //setVisit(true)
         liff.login();
-        console.log(" ยังไม่ได้แล้วนะจ้ะ");
+        navigate("/");
+       
+        console.log(" ยังไม่ได้แล้วนะจ้ะ" ,visit);
       }
     } catch (error) {
       console.log("erorr", error);
@@ -68,7 +89,7 @@ export function LineProvider({ children }: TypeProviderLine) {
   const getProfile = async () => {
     const profile: any = await liff.getProfile();
     setdataLine(profile);
-    navigate("/home");
+    navigate("/");
   };
 
   const logout = async () => {
@@ -87,7 +108,7 @@ export function LineProvider({ children }: TypeProviderLine) {
         getProfile,
         logout,
         dataLine,
-        handleCheckvisit,
+        refaceHome,
         visit,
         setVisit,
       }}

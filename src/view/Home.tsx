@@ -5,22 +5,18 @@ import Nav from "../component/nav/Nav";
 import Slider from "../component/slider/Slider";
 import Video from "../component/videos/Video";
 import { useLineContext } from "../context/LineContext";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect,  } from "react";
+
 
 
 function Home() {
- const {mainLine ,visit }=useLineContext()
-  const navigate = useNavigate();
+
+ const {mainLine ,visit ,getProfile , refaceHome }=useLineContext()
+ 
+   
+
   useEffect(()=>{
-    if (visit === true){
-      navigate("/home");
-      console.log('visit', visit);
-      
-    }else{
-      mainLine()
-      console.log('-------------------------');
-    }
+    refaceHome()
   },[])
   
 

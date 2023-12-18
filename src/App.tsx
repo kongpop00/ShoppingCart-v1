@@ -5,36 +5,31 @@ import Contct from "./view/Contct";
 import About from "./view/About";
 import Shop from "./view/Shop";
 
-
 import { SearchbarProvider } from "./context/SearchContext";
 import { ShoppingCartProvider } from "./context/ShopPingCartContext";
 import { CheckOut } from "./component/checkOut/checkOut";
 
 import { LineProvider } from "./context/LineContext";
 
-
 function App() {
   return (
     <LineProvider>
-    <SearchbarProvider>
-      <ShoppingCartProvider>
-        <CheckOut />
-        <div className="relative">
-          <Routes>
-         
- 
-            <Route path="/" element={<Home/>} />
-            <Route path="/About" element={<About />} />
-            <Route path="/Contact" element={<Contct />} />
-            <Route path="/Shop" element={<Shop />} />
-           
-          </Routes>
-          <div className="mt-[50px]">
-            <Footer />
+      <SearchbarProvider>
+        <ShoppingCartProvider>
+          <CheckOut />
+          <div className="relative bg-white">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/About" element={<About />} />
+              <Route path="/Contact" element={<Contct />} />
+              <Route path="/Shop" element={<Shop />} />
+            </Routes>
+            <div className="mt-[50px]">
+              <Footer />
+            </div>
           </div>
-        </div>
-      </ShoppingCartProvider>
-    </SearchbarProvider>
+        </ShoppingCartProvider>
+      </SearchbarProvider>
     </LineProvider>
   );
 }

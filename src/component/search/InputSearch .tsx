@@ -9,7 +9,7 @@ const InputSearch = () => {
         type="text"
         onChange={(e) => setSearchName(e.target.value)}
         placeholder="Search Menu"
-        className=" ml-[20px] border-none focus: rounded-none text-[#8e6646] font-[500] text-[18px] focus:border-red-200 input input-bordered"
+        className=" ml-[20px] border-none focus: rounded-none text-[#8e6646] font-[500] text-[18px] bg-white input "
       />
       <Link to="/shop">
         <button

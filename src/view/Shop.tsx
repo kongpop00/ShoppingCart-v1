@@ -1,4 +1,4 @@
-import Nav from "../component/nav/Nav";
+
 
 import Storeitems from "../items.json";
 import SearchBar from "../component/search/Search";
@@ -34,9 +34,7 @@ const Shop = () => {
   }
   return (
     <div>
-      <div>
-        <Nav />
-      </div>
+    
       <div className="my-[40px]">
       <SearchBar />
       </div>

@@ -10,20 +10,21 @@ import { ShoppingCartProvider } from "./context/ShopPingCartContext";
 import { CheckOut } from "./component/checkOut/checkOut";
 
 import { LineProvider } from "./context/LineContext";
+import Nav from "./component/nav/Nav";
 
 function App() {
   return (
     <LineProvider>
       <SearchbarProvider>
         <ShoppingCartProvider>
-          <Nav/>
+          <Nav />
           <CheckOut />
           <div className="relative bg-white">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/About" element={<About />} />
-              <Route path="/Contact" element={<Contct />} />
-              <Route path="/Shop" element={<Shop />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contct />} />
+              <Route path="/shop" element={<Shop />} />
             </Routes>
             <div className="mt-[50px]">
               <Footer />

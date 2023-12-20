@@ -11,7 +11,7 @@ const ShowmenuAndReview = () => {
       <div className="flex flex-col p-[20px] sm:p-[40px] lg:flex-row  lg:w-full xl:max-w-7xl xl:m-[auto] xl:p-0  ">
         <div className="exemple menu h-[750px] sm:h-[550px] lg:h-[580px] xl:h-[650px] gap-[10px]  grid grid-cols-2 sm:grid-cols-3 lg:w-[80%] relative ">
           <div className="absolute bottom-1  w-[100%] text-center ">
-            <Link to="/Shop">
+            <Link to="/shop">
               {" "}
               <button  className="btn btn-outline border-[#8e6646] hover:bg-[#e6bb5c] w-[76%]  ">
                 Shop Now

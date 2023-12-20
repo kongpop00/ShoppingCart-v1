@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Nav from "../component/nav/Nav";
+
 
 const Listperson = [
   {
@@ -53,7 +53,7 @@ const Contact = () => {
  
   return (
     <div className=" m-[auto]">
-      <Nav />
+    
       <div className="mt-[40px] grid grid-cols-1 md:grid-cols-2 m-[auto] max-w-7xl">
         <div>
           {dataContact.map((e) => {

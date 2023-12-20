@@ -9,6 +9,8 @@ type CartItemsType = {
 export function CartItems({ id, quantity }: CartItemsType) {
   const { remove } = useShoppingCart();
   const itemjs = items.find((i) => i.id === id);
+  console.log('finditem', itemjs);
+  
 
   if (itemjs == null) return null;
   return (

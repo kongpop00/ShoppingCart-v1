@@ -1,9 +1,9 @@
 
-import Nav from "../component/nav/Nav";
+
 const About = () => {
   return (
     <div>
-      <Nav />
+    
       <div className="max-w-7xl flex flex-col m-[auto] justify-center items-center">
         <div className="avatar p-[40px]">
           <div className="w-[250px] rounded-full ring ring-[#8e6646] ring-offset-base-100 ring-offset-2">

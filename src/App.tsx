@@ -16,6 +16,7 @@ function App() {
     <LineProvider>
       <SearchbarProvider>
         <ShoppingCartProvider>
+          <Nav/>
           <CheckOut />
           <div className="relative bg-white">
             <Routes>

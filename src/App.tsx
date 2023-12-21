@@ -11,6 +11,7 @@ import { CheckOut } from "./component/checkOut/checkOut";
 
 import { LineProvider } from "./context/LineContext";
 import Nav from "./component/nav/Nav";
+import NotFound from "./view/NotFound";
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contct />} />
               <Route path="/shop" element={<Shop />} />
+              <Route path="*" element={<NotFound />} />
+           
             </Routes>
             <div className="mt-[50px]">
               <Footer />

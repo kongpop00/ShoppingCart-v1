@@ -42,13 +42,13 @@ const Listmenu = () => {
           <NavLink to="/" className="hover:text-[#9f5500] font-sans">
             HOME
           </NavLink>
-          <NavLink to="/Shop" className="hover:text-[#9f5500]">
+          <NavLink to="/shop" className="hover:text-[#9f5500]">
             SHOP
           </NavLink>
-          <NavLink to="/About" className="hover:text-[#9f5500]">
+          <NavLink to="/about" className="hover:text-[#9f5500]">
             ABOUT
           </NavLink>
-          <NavLink to="/Contact" className="hover:text-[#9f5500]">
+          <NavLink to="/contact" className="hover:text-[#9f5500]">
             CONTACT
           </NavLink>
         </div>

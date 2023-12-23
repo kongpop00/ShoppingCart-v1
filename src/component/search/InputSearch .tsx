@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useSearchContext } from "../../context/SearchContext";
 
 const InputSearch = () => {
-  const { setSearchName, handlesearchname } = useSearchContext();
+  const { setSearchName, handelSearchName } = useSearchContext();
   return (
     <div className="flex w-[320px] bg-white rounded-[30px] border-2  mt-[20px]">
       <input 
@@ -13,7 +13,7 @@ const InputSearch = () => {
       />
       <Link to="/shop">
         <button
-          onClick={handlesearchname}
+          onClick={ handelSearchName}
           className=" bg-[#e6bb5c] flex items-center justify-center hover:bg-slate-400 p-[7px] h-[50px] w-[50px] rounded-full  text-[18px] font-[500] text-white"
         >
           {" "}

@@ -1,28 +1,24 @@
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 
-const urlimg = ["/slider/1.gif" , "/slider/2.gif","/slider/3.gif"];
-
-
+const urlimg = ["/slider/1.gif", "/slider/2.gif", "/slider/3.gif"];
 
 const Slider = () => {
   const [changeimg, setChangeImg] = useState(0);
-  if ( changeimg > urlimg.slice(0 ,-1).length ||changeimg < 0 ){
-    console.log("changeimg", urlimg.length);
+  if (changeimg > urlimg.slice(0, -1).length || changeimg < 0) {
     setChangeImg(0);
   }
 
- 
-  useEffect(()=>{
+  useEffect(() => {
     const interval = setInterval(() => {
-     setChangeImg(changeimg=>changeimg+1)
+      setChangeImg((changeimg) => changeimg + 1);
     }, 6000);
     return () => clearInterval(interval);
-  },[])
+  }, []);
 
   return (
     <div className=" max-w-7xl bg-amber-300 mt-[1px] m-[auto] relative ">
       <img className="" src={urlimg[changeimg]} alt="" />
-     
+
       <button
         className="absolute inset-y-0 left-2 "
         onClick={() => setChangeImg(changeimg - 1)}
@@ -61,7 +57,6 @@ const Slider = () => {
           />
         </svg>
       </button>
-     
     </div>
   );
 };

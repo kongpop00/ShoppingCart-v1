@@ -7,10 +7,10 @@ import { useLineContext } from "../../context/LineContext";
 
 const Nav = () => {
   const { cartQeantity, openCart } = useShoppingCart();
-  const { setSearchName, handlesearchname } = useSearchContext();
+  const { setSearchName, handelSearchName  } = useSearchContext();
   const { dataLine , logout ,mainLine} = useLineContext();
   return (
-    <div className="">
+    <div >
       <div className=" navbar  m-[auto] px-[20px] bg-[#8e6646]">
         <div className="flex-1">
           <Link to="/">
@@ -31,7 +31,7 @@ const Nav = () => {
             />
             <Link to="/shop">
               <button
-                onClick={handlesearchname}
+                onClick={handelSearchName }
                 className=" bg-[#e6bb5c] flex items-center justify-center hover:bg-slate-400 p-[7px] h-[50px] w-[50px] rounded-full  text-[18px] font-[500] text-white"
               >
                 {" "}

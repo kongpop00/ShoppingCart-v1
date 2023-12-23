@@ -2,6 +2,7 @@ import {
   ReactNode,
   createContext,
   useContext,
+  useEffect,
   useState
 } from "react";
   
@@ -17,7 +18,7 @@ import {
     Chocolate: () => void;
     searchTypeBar: string;
     searchNameAndType: boolean;
-    handlesearchname: () => void;
+    handelSearchName : () => void;
     setSearchName : string  | any
     searchName :string 
   };
@@ -61,13 +62,17 @@ import {
       setSearchNameAndType(false)
     };
   
-    const handlesearchname = () => {
+    const handelSearchName = () => {
       setgetinput(searchName)
       setSearchNameAndType(true)
      
   
     };
   
+    useEffect(()=>{
+      console.log('SearchNameAndType' ,searchNameAndType);
+      
+    },[searchNameAndType])
     
     return (
       <useSearchsContext.Provider
@@ -80,7 +85,7 @@ import {
           searchNameAndType,
           setSearchName,
           searchName,
-          handlesearchname
+          handelSearchName 
         }}
       >
         {children}

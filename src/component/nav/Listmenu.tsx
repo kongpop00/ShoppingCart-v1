@@ -20,9 +20,7 @@ const Listmenu = () => {
     setShow_List(false);
   };
 
-  useEffect(() => {
-    console.log("show_list", show_list);
-  }, [show_list]);
+ 
 
   
   return (
@@ -59,7 +57,7 @@ const Listmenu = () => {
         </div>
       </div>
       {/**--------------------------------------------- */}
-      {/** ถ้าเป็น false จะเปิด  */}
+      
       {show_list && (
         <div className=" text-[18px] z-10 absolute top-0 w-full m-[auto] bg-[#8e6646] flex justify-center h-[100vh] leading-[50px] md:hidden">
           <div className="flex flex-col items-center w-[300px] mt-[70px] p-[50px] text-[20px] text-white  ">

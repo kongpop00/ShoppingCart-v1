@@ -1,4 +1,4 @@
-import TabReview from "../component/content/TabReview";
+import ServiceTab from "../component/content/ServiceTab";
 import ShowmenuAndReview from "../component/content/ShowmenuAndReview";
 import Slider from "../component/slider/Slider";
 import Video from "../component/videos/Video";
@@ -14,9 +14,8 @@ function Home() {
 
   return (
     <div className="">
-      
       <Slider />
-      <TabReview />
+      <ServiceTab />
       <ShowmenuAndReview />
       <Video />
     </div>

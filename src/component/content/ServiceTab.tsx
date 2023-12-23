@@ -1,6 +1,6 @@
 
 
-const TabReview = () => {
+const ServiceTab = () => {
   return (
     <div className='max-w-7xl  px-[20px]  grid  grid-cols-4  md:grid-cols-4 md:m-[auto] md:mt-[40px] gap-[20px]'>
         {/**item 1 */}
@@ -53,4 +53,4 @@ const TabReview = () => {
   )
 }
 
-export default TabReview
+export default ServiceTab

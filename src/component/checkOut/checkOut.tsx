@@ -30,7 +30,7 @@ export const CheckOut = (props: any) => {
     console.log(userids);
   
     try {
-      const respone = await axios.post("http://localhost:8000/send-message", {
+      const respone = await axios.post("https://server-line-liff.vercel.app/send-message", {
         userId: userids ,
         messages: "กรุณา ส่งสลิปการโอน ในไลน์ ด้วยครับ ",
       });

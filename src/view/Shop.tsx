@@ -3,7 +3,7 @@ import SearchBar from "../component/search/Search";
 import { useSearchContext } from "../context/SearchContext";
 import InputSearch from "../component/search/InputSearch ";
 import { StoreItem } from "../component/shopping/stoeItems";
-import { useEffect } from "react";
+
 
 const Shop = () => {
   const { searchTypeBar, searchNameAndType, searchName } = useSearchContext();
@@ -15,17 +15,13 @@ const Shop = () => {
     (e) => e.name.toLowerCase().slice(0).includes(searchName) //เปลี่ยนค่ากงนี้
   );
 
-  useEffect(() => {
-    console.log(" NameorderCartall", NameorderCartall);
-    console.log('TypeorderCartall',TypeorderCartall);
-    
-  }, [NameorderCartall,TypeorderCartall]);
-  let searchsFliter = [];
+ 
+  let searchFliter = [];
 
   if (searchNameAndType === false) {
-    searchsFliter = TypeorderCartall;
+    searchFliter = TypeorderCartall;
   } else {
-    searchsFliter = NameorderCartall;
+    searchFliter = NameorderCartall;
   }
   return (
     <div>
@@ -40,7 +36,7 @@ const Shop = () => {
          
           <h1 className="text-[70px] font-[500] text-[#8e6646]">No Items</h1>
         </> : <>
-        {searchsFliter.map((item) => (
+        {searchFliter.map((item) => (
           <div className="" key={item.id}>
             <StoreItem {...item} />
           </div>

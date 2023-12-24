@@ -92,9 +92,7 @@ import { CheckOut } from "../component/checkOut/checkOut"
       });
     };
     {
-      /* decreaseCartQuantity
-  1 ตรวจสอบ ปรมาน มันเท่ากับ 1 ไหม 
-  2. กรอง  */
+  
     }
     const decreaseCartQuantity = (id: number) => {
       setCartItems((CurrentCart) => {

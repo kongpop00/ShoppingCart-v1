@@ -6,11 +6,11 @@ import Listmenu from "./Listmenu";
 import { useLineContext } from "../../context/LineContext";
 
 const Nav = () => {
-  const { cartQeantity, openCart } = useShoppingCart();
-  const { setSearchName, handelSearchName  } = useSearchContext();
-  const { dataLine , logout ,mainLine} = useLineContext();
+  const { cartQeantity, handelToggleCart } = useShoppingCart();
+  const { setSearchName, handelSearchName } = useSearchContext();
+  const { dataLine, logout, mainLine } = useLineContext();
   return (
-    <div >
+    <div>
       <div className=" navbar  m-[auto] px-[20px] bg-[#8e6646]">
         <div className="flex-1">
           <Link to="/">
@@ -27,14 +27,13 @@ const Nav = () => {
               type="text"
               onChange={(e) => setSearchName(e.target.value)}
               placeholder="Search Menu"
-              className=" ml-[20px] border-none focus: rounded-none text-[#8e6646] font-[500] text-[18px] focus:border-red-200 input input-bordered"
+              className=" ml-[20px] border-none focus: rounded-none text-[#8e6646] font-[500] text-[18px] focus:outline-none focus-within:border-none  input input-bordered"
             />
-            <Link to="/shop">
+           
               <button
-                onClick={handelSearchName }
+                onClick={handelSearchName}
                 className=" bg-[#e6bb5c] flex items-center justify-center hover:bg-slate-400 p-[7px] h-[50px] w-[50px] rounded-full  text-[18px] font-[500] text-white"
               >
-                {" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -50,14 +49,17 @@ const Nav = () => {
                   />
                 </svg>
               </button>
-            </Link>
+        
           </div>
           {/**end input */}
 
           {/**start cart */}
 
           <div className="dropdown  dropdown-end mr-[60px] mt-[10px]">
-            <button onClick={openCart} className="btn w btn-ghost btn-circle">
+            <button
+              onClick={() => handelToggleCart(true)}
+              className="btn w btn-ghost btn-circle"
+            >
               <div className="indicator">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -101,12 +103,24 @@ const Nav = () => {
                 className="mt-3 z-[1] p-2 menu menu-sm dropdown-content  h-[65px] w-52 "
               >
                 <li>
-             <button onClick={logout} className="bg-red-600  text-white font-[500] text-[20px] flex justify-center items-center h-[60px]">Log out</button>
+                  <button
+                    onClick={logout}
+                    className="bg-red-600  text-white font-[500] text-[20px] flex justify-center items-center h-[60px]"
+                  >
+                    Log out
+                  </button>
                 </li>
               </ul>
             </div>
           </div>
-        ): <button onClick={mainLine} className=" btn h-[50px] bg-[#e6bb5c] mr-[30px] text-[20px] text-white hidden md:block">Login</button>}
+        ) : (
+          <button
+            onClick={mainLine}
+            className=" btn h-[50px] bg-[#e6bb5c] mr-[30px] text-[20px] text-white hidden md:block"
+          >
+            Login
+          </button>
+        )}
       </div>
       <Listmenu />
     </div>

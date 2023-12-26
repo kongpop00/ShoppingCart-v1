@@ -1,95 +1,65 @@
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState
-} from "react";
-  
-  
-  
-  type TypeProviderSearch = {
-    children: ReactNode;
-  };
-  type searchTypecontext = {
-    All: () => void;
-    Coffee: () => void;
-    Tea: () => void;
-    Chocolate: () => void;
-    searchTypeBar: string;
-    searchNameAndType: boolean;
-    handelSearchName : () => void;
-    setSearchName : string  | any
-    searchName :string 
-  };
-  
-  const useSearchsContext = createContext({} as searchTypecontext);
-  export function useSearchContext() {
-    return useContext(useSearchsContext);
+import { ReactNode, createContext, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+type TypeProviderSearch = {
+  children: ReactNode;
+};
+type searchTypecontext = {
+ 
+  searchTypeBar: string;
+  searchNameAndType: boolean;
+  handelSearchName: () => void;
+  setSearchName: string | any;
+  searchName: string;
+  getInput: string;
+  findTypeOrder:(typeorder:string)=>void 
+};
+
+const useSearchsContext = createContext({} as searchTypecontext);
+export function useSearchContext() {
+  return useContext(useSearchsContext);
+}
+
+export function SearchbarProvider({ children }: TypeProviderSearch) {
+  {
+    /**State start */
   }
-  
-  export function SearchbarProvider({ children }: TypeProviderSearch) {
-  
-  
-  
-  
-    {
-      /**State start */
-    }
-    const [searchTypeBar, setSearchTypeBar] = useState<string>("all");
-    const [searchName, setSearchName] = useState("");
-    const [  , setgetinput]=useState<string>('')
-    const [searchNameAndType, setSearchNameAndType] = useState(false);
-    {
-      /**State end */
-    }
-  
-    const All = () => {
-      setSearchTypeBar("all");
-      setSearchNameAndType(false)
-    };
-  
-    const Coffee = () => {
-      setSearchTypeBar("coffee");
-      setSearchNameAndType(false)
-    };
-    const Tea = () => {
-      setSearchTypeBar("tea");
-      setSearchNameAndType(false)
-    };
-    const Chocolate = () => {
-      setSearchTypeBar("chocolate");
-      setSearchNameAndType(false)
-    };
-  
-    const handelSearchName = () => {
-      setgetinput(searchName)
-      setSearchNameAndType(true)
-     
-  
-    };
-  
-    useEffect(()=>{
-      console.log('SearchNameAndType' ,searchNameAndType);
-      
-    },[searchNameAndType])
-    
-    return (
-      <useSearchsContext.Provider
-        value={{
-          All,
-          Coffee,
-          Tea,
-          Chocolate,
-          searchTypeBar,
-          searchNameAndType,
-          setSearchName,
-          searchName,
-          handelSearchName 
-        }}
-      >
-        {children}
-      </useSearchsContext.Provider>
-    );
+  const [searchTypeBar, setSearchTypeBar] = useState<string>("all");
+  const [searchName, setSearchName] = useState("");
+  const [getInput, setGetInput] = useState<string>("");
+  const [searchNameAndType, setSearchNameAndType] = useState(false);
+
+  {
+    /**State end */
   }
-  
+  const navigate = useNavigate();
+
+  const findTypeOrder = (typeorder:string)=>{
+    setSearchTypeBar(typeorder);
+    setSearchNameAndType(false);
+  }
+ 
+
+  const handelSearchName = () => {
+    setGetInput(searchName);
+    setSearchNameAndType(true);
+    navigate("/shop");
+  };
+
+  return (
+    <useSearchsContext.Provider
+      value={{
+       
+        searchTypeBar,
+        searchNameAndType,
+        setSearchName,
+        searchName,
+        handelSearchName,
+        getInput,
+        findTypeOrder
+      }}
+    >
+      {children}
+    </useSearchsContext.Provider>
+  );
+}

@@ -5,15 +5,15 @@ import { CartItems } from "./CartItems";
 import { FormatCurrency } from "./FormatCurrency";
 
 const ShopingTabCart = (props:any) => {
-  const { closeCart, cartItems, checkOutOpen } = useShoppingCart();
+  const {handelToggleCart, cartItems, checkOutOpen } = useShoppingCart();
 
   return (
     <div className="">
-      {props.open && (
+      {props.openToggleCart && (
         <div className=" z-50  absolute  top-20 right-0 bg-[#ece3d6] w-full border-2 h-[auto] sm:w-[80%] md:w-[70%] md:p-[20px] lg:w-[50%] xl:w-[40%]">
           <div className="Header flex justify-between p-[40px]">
             <span className="text-[50px] text-[#8e6646]">Cart</span>
-            <button className="" onClick={closeCart}>
+            <button className="" onClick={()=>handelToggleCart(false)}>
               <svg
                 className="fill-current bg-[#8e6646] text-white hover:bg-[#e6bb5c] rounded-full "
                 xmlns="http://www.w3.org/2000/svg"

@@ -7,51 +7,47 @@ import { FormatCurrency } from "../shopping/FormatCurrency";
 import CheckOutCart from "./checkOutCart";
 import axios from "axios";
 
-
-
 export const CheckOut = (props: any) => {
   const { checkOutClose, cartItems, checkPrompay, checkThank, checkCash } =
     useShoppingCart();
-  const {dataLine ,mainLine ,getProfile 
-  } = useLineContext()
+  const { dataLine, mainLine, getProfile } = useLineContext();
   const date = new Date();
   const dates = String(date).split(" ");
-  console.log("date ", dates);
+  
 
-  useEffect(()=>{
-    getProfile()
-    console.log('dataLine', dataLine);
-    
-    
-  },[])
+  useEffect(() => {
+    getProfile();
+   
+  }, []);
 
   const sendMessageLine = async () => {
     const userids = dataLine.userId;
-    console.log(userids);
-  
+    
+
     try {
-      const respone = await axios.post("https://server-line-liff.vercel.app/send-message", {
-        userId: userids ,
-        messages: "กรุณา ส่งสลิปการโอน ในไลน์ ด้วยครับ ",
-      });
-  
-      console.log("respones ", respone.data);
+      const respone = await axios.post(
+        "https://server-line-liff.vercel.app/send-message",
+        {
+          userId: userids,
+          messages: "กรุณา ส่งสลิปการโอน ในไลน์ ด้วยครับ ",
+        }
+      );
+
+      
     } catch (error) {
-      console.log("errorasdasasdasd", error);
+      console.log("error", error);
     }
   };
-  const handlepush = ()=>{
-   
-    sendMessageLine()
-    checkThank()
-    
-  }
+  const handlepush = () => {
+    sendMessageLine();
+    checkThank();
+  };
 
   return (
     <div>
       {props.check && (
         <div className="w-full fixed overflow-scroll top-0 h-full z-40 py-[40px] bg-slate-500/75 flex">
-          <div className="grid grid-cols-1 md:grid-cols-2 relative  bg-white w-[90%] py-[20px] h-[auto] m-[auto] items-center sm:h-[70%] xl:w-[70%] ">
+          <div className="grid grid-cols-1 md:grid-cols-2 relative   bg-white w-[90%] py-[20px] h-[auto] m-[auto] items-center sm:h-[70%] md:mt-[-10px] lg:h-[70%] xl:w-[70%] ">
             {/*  */}
             <div className="z-50  h-[100%]  px-[10px] border-r-4  md:grid md:grid-cols-1 md:items-center ">
               <div className="sm:px-[70px]">
@@ -88,8 +84,8 @@ export const CheckOut = (props: any) => {
                 <button
                   className=" border-2 m-[auto] h-[45px]  w-[60%] sm:w-[50%] lg:w-[45%] xl:w-[40%] hover:bg-[#ece3d6] rounded-[15px]  flex items-center justify-center p-[25px] mt-[10px] "
                   onClick={checkCash}
-                >
-                  <img src="" alt="" /> Cash{" "}
+                > Cash
+                 
                 </button>
               </div>
             </div>
@@ -98,34 +94,35 @@ export const CheckOut = (props: any) => {
               {props.promPay && (
                 //--------------------
                 <div className="text-center  ">
-                  {dataLine ? 
-                   <><img
-                      className="w-[70%] sm:w-[70%] m-[auto] xl:w-[100%]"
-                      src="/checkout/Prompay.jpg "
-                      alt="" /><button
+                  {dataLine ? (
+                    <>
+                      <img
+                        className="w-[70%] sm:w-[70%] m-[auto] xl:w-[100%]"
+                        src="/checkout/Prompay.jpg "
+                        alt=""
+                      />
+                      <button
                         className="btn btn-info mt-[20px]  "
                         onClick={handlepush}
                       >
                         ชำระเรียบร้อย
-                      </button></> :
+                      </button>
+                    </>
+                  ) : (
                     <>
-                    <div>
-                      <h1>กรุณา Login ก่อนทำการสั่งซื้อสินค้า</h1>
-                      <button onClick={mainLine} className="btn bg-[#00b900] text-white text-[20px] w-full mt-[10px] ">Login line +</button>
-
-                    </div>
-                    </>  
-                  
-                    }
-                  
+                      <div>
+                        <h1>กรุณา Login ก่อนทำการสั่งซื้อสินค้า</h1>
+                        <button
+                          onClick={mainLine}
+                          className="btn bg-[#00b900] text-white text-[20px] w-full mt-[10px] "
+                        >
+                          Login line +
+                        </button>
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
-
-
-
-
-
-
 
               {props.thank && (
                 <div className="m-[auto] ">
@@ -145,7 +142,7 @@ export const CheckOut = (props: any) => {
                 </div>
               )}
 
-              {props.Cash && (
+              {props.cash && (
                 <div className="text-center">
                   <div>
                     <img

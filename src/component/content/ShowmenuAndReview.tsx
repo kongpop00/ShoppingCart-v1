@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Review from "../review/Review";
 const ShowmenuAndReview = () => {
   const itemjs = StoreItem.slice(0, 6);
-  console.log("items", itemjs);
+  
 
   return (
     <div className="mt-[40px]">

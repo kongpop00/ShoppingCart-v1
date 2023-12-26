@@ -1,11 +1,6 @@
 import liff from "@line/liff";
 
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useState,
-} from "react";
+import { ReactNode, createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 type TypeProviderLine = {
@@ -19,9 +14,7 @@ type LineTypecontext = {
   dataLine: any;
   setVisit: any;
   visit: boolean;
-  refaceHome:()=>void
- 
- 
+  refaceHome: () => void;
 };
 
 type dataLine = {
@@ -40,26 +33,19 @@ export function LineProvider({ children }: TypeProviderLine) {
   const navigate = useNavigate();
   const [visit, setVisit] = useState(false);
 
-  
   const refaceHome = async () => {
-    console.log("mainline");
-
     await liff.init({
       liffId: "2002021317-2Bymmev1", // Use own liffId
     });
     try {
-      console.log("===========================");
-
       if (liff.isLoggedIn()) {
         getProfile();
         console.log("login แล้วนะจ้ะ");
-        
-      } 
+      }
     } catch (error) {
       console.log("erorr", error);
     }
   };
-
 
   const mainLine = async () => {
     console.log("mainline");
@@ -73,13 +59,12 @@ export function LineProvider({ children }: TypeProviderLine) {
       if (liff.isLoggedIn()) {
         getProfile();
         console.log("login แล้วนะจ้ะ");
-        
       } else {
         //setVisit(true)
         liff.login();
         navigate("/");
-       
-        console.log(" ยังไม่ได้แล้วนะจ้ะ" ,visit);
+
+        console.log(" ยังไม่ได้แล้วนะจ้ะ", visit);
       }
     } catch (error) {
       console.log("erorr", error);
@@ -94,11 +79,9 @@ export function LineProvider({ children }: TypeProviderLine) {
 
   const logout = async () => {
     liff.logout();
-    setVisit(false) 
+    setVisit(false);
     navigate("/");
     window.location.reload();
-  
-
   };
 
   return (

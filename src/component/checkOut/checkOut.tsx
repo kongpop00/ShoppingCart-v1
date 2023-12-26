@@ -29,13 +29,15 @@ export const CheckOut = (props: any) => {
         "https://server-line-liff.vercel.app/send-message",
         {
           userId: userids,
-          messages: "กรุณา ส่งสลิปการโอน ในไลน์ ด้วยครับ ",
+          messages: "Please attach a proof of payment/transfer slip.",
         }
       );
-
-      
+       
+      return respone
     } catch (error) {
       console.log("error", error);
+      
+      
     }
   };
   const handlepush = () => {

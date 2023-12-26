@@ -40,7 +40,7 @@ export function LineProvider({ children }: TypeProviderLine) {
     try {
       if (liff.isLoggedIn()) {
         getProfile();
-        console.log("login แล้วนะจ้ะ");
+        
       }
     } catch (error) {
       console.log("erorr", error);
@@ -48,23 +48,23 @@ export function LineProvider({ children }: TypeProviderLine) {
   };
 
   const mainLine = async () => {
-    console.log("mainline");
+    
 
     await liff.init({
       liffId: "2002021317-2Bymmev1", // Use own liffId
     });
     try {
-      console.log("===========================");
+      
 
       if (liff.isLoggedIn()) {
         getProfile();
-        console.log("login แล้วนะจ้ะ");
+        
       } else {
         //setVisit(true)
         liff.login();
         navigate("/");
 
-        console.log(" ยังไม่ได้แล้วนะจ้ะ", visit);
+      
       }
     } catch (error) {
       console.log("erorr", error);

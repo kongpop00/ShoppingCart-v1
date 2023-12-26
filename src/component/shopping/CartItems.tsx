@@ -9,31 +9,32 @@ type CartItemsType = {
 export function CartItems({ id, quantity }: CartItemsType) {
   const { remove } = useShoppingCart();
   const itemjs = items.find((i) => i.id === id);
-  console.log('finditem', itemjs);
-  
 
   if (itemjs == null) return null;
   return (
     <div className="flex items-center justify-between  py-3 bg-[#ece3d6]     w-full ">
       <div className="flex items-center ">
-        <img className="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px]" src={itemjs.imgUrl} alt="" />
+        <img
+          className="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px]"
+          src={itemjs.imgUrl}
+          alt=""
+        />
         <div className="flex flex-col flex-wrap  py-[40px] ">
           <h1 className="text-[16px] sm:text-[20px] font-[500] ">
-            {itemjs.name}{" "}
+            {itemjs.name}
             <label className="font-[200]  text-[14px]  sm:text-[18px] ml-[10px]">
               {quantity > 1 && <span>{quantity}X</span>}
             </label>
           </h1>
-          <span className="text-[14px] sm:text-[18px]">{FormatCurrency(itemjs.price)}</span>
-          
+          <span className="text-[14px] sm:text-[18px]">
+            {FormatCurrency(itemjs.price)}
+          </span>
         </div>
-
       </div>
 
       <div className="flex ml-[10px] sm:text-[18px]  ">
         <span>{FormatCurrency(itemjs.price * quantity)}</span>
         <button>
-          {" "}
           <svg
             className="fill-current ml-[10px]"
             xmlns="http://www.w3.org/2000/svg"
